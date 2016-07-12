@@ -39,14 +39,14 @@ module OAI
           message = error.content
           code = ""
           if defined?(error.property) == nil
-              code = error.attributes['code']
-           else
-	      begin
-	 	code = error["code"]
-	      rescue
-                code = error.property('code')
-	      end
+            code = error.attributes['code']
+         else
+           begin
+             code = error["code"]
+           rescue
+             code = error.property('code')
            end
+         end
       end
       raise OAI::Exception.new(message, code)
     end
